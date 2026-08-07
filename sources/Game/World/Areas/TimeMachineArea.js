@@ -24,7 +24,7 @@ export class TimeMachineArea extends Area
             InteractivePoints.STATE_CONCEALED,
             () =>
             {
-                window.open('https://github.com/majinmagros/portfolio-magros')
+                window.open('http://localhost:5174')
             },
             () =>
             {
