@@ -272,6 +272,26 @@ export class Audio
                 path: 'sounds/musics/Underwater Rhythm.mp3',
                 name: 'Underwater Rhythm'
             },
+            {
+                path: 'sounds/musics/Bass Rush (Instrumental).mp3',
+                name: 'Bass Rush (Instrumental)'
+            },
+            {
+                path: 'sounds/musics/Bass Rush (Vocal Edit).mp3',
+                name: 'Bass Rush (Vocal Edit)'
+            },
+            {
+                path: 'sounds/musics/Elevated Frequencies (Backing Track).mp3',
+                name: 'Elevated Frequencies (Backing Track)'
+            },
+            {
+                path: 'sounds/musics/Night (Instrumental).mp3',
+                name: 'Night (Instrumental)'
+            },
+            {
+                path: 'sounds/musics/Underwater Rhythm (Backing Track).mp3',
+                name: 'Underwater Rhythm (Backing Track)'
+            },
         ]
         this.playlist.index = (Math.floor(Date.now() / 1000 / 60 / 3) % this.playlist.songs.length) // Different music every X minutes
         // this.playlist.index = -1 // Different music every X minutes
