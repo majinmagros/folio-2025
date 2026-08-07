@@ -160,6 +160,118 @@ export class Audio
                 path: 'sounds/musics/Baguira.mp3',
                 name: 'Baguira.mp3'
             },
+            {
+                path: 'sounds/musics/Adrenaline Loop 2 AI Drum & Bass Thrillstep.mp3',
+                name: 'Adrenaline Loop 2'
+            },
+            {
+                path: 'sounds/musics/Bass Rush.mp3',
+                name: 'Bass Rush'
+            },
+            {
+                path: 'sounds/musics/Cut Through the Dark AI Drum & Bass Eclipse.mp3',
+                name: 'Cut Through the Dark'
+            },
+            {
+                path: 'sounds/musics/Phantom Circuit.mp3',
+                name: 'Phantom Circuit'
+            },
+            {
+                path: 'sounds/musics/Dark Assignment.mp3',
+                name: 'Dark Assignment'
+            },
+            {
+                path: 'sounds/musics/Deep Reverberations.mp3',
+                name: 'Deep Reverberations'
+            },
+            {
+                path: 'sounds/musics/Echoes in the Dark.mp3',
+                name: 'Echoes in the Dark'
+            },
+            {
+                path: 'sounds/musics/Eclipse of Sound.mp3',
+                name: 'Eclipse of Sound'
+            },
+            {
+                path: 'sounds/musics/Elevated Frequencies.mp3',
+                name: 'Elevated Frequencies'
+            },
+            {
+                path: 'sounds/musics/Final Frontier.mp3',
+                name: 'Final Frontier'
+            },
+            {
+                path: 'sounds/musics/Haunted Signal.mp3',
+                name: 'Haunted Signal'
+            },
+            {
+                path: 'sounds/musics/Implosion.mp3',
+                name: 'Implosion'
+            },
+            {
+                path: 'sounds/musics/Into the Night.mp3',
+                name: 'Into the Night'
+            },
+            {
+                path: 'sounds/musics/Lurking Frenzy.mp3',
+                name: 'Lurking Frenzy'
+            },
+            {
+                path: 'sounds/musics/Nightmare Pulse.mp3',
+                name: 'Nightmare Pulse'
+            },
+            {
+                path: 'sounds/musics/Pulse Deeper AI Drum & Bass Ritual.mp3',
+                name: 'Pulse Deeper'
+            },
+            {
+                path: 'sounds/musics/Quantum Rave.mp3',
+                name: 'Quantum Rave'
+            },
+            {
+                path: 'sounds/musics/Quantum Rave 2.mp3',
+                name: 'Quantum Rave 2'
+            },
+            {
+                path: 'sounds/musics/Rush.mp3',
+                name: 'Rush'
+            },
+            {
+                path: 'sounds/musics/Shadow Pulse.mp3',
+                name: 'Shadow Pulse'
+            },
+            {
+                path: 'sounds/musics/Shadow Waltz AI Drum & Bass Phantom Step.mp3',
+                name: 'Shadow Waltz'
+            },
+            {
+                path: 'sounds/musics/Shadows in Motion.mp3',
+                name: 'Shadows in Motion'
+            },
+            {
+                path: 'sounds/musics/Slenderman Comes for You AI Drum & Bass Thrillstep.mp3',
+                name: 'Slenderman Comes for You'
+            },
+            {
+                path: 'sounds/musics/Sneaky Shadows AI Drum & Bass The Hollow Beat.mp3',
+                name: 'Sneaky Shadows'
+            },
+            {
+                path: 'sounds/musics/Spatial Collapse.mp3',
+                name: 'Spatial Collapse'
+            },
+            {
+                path: 'sounds/musics/Synthetic Shadows Milestone AI Drum & Bass.mp3',
+                name: 'Synthetic Shadows'
+            },
+            {
+                path: 'sounds/musics/Thrillstep.mp3',
+                name: 'Thrillstep'
+            },
+            {
+                path: 'sounds/musics/Underwater Rhythm.mp3',
+                name: 'Underwater Rhythm'
+            },
         ]
         this.playlist.index = (Math.floor(Date.now() / 1000 / 60 / 3) % this.playlist.songs.length) // Different music every X minutes
         // this.playlist.index = -1 // Different music every X minutes
