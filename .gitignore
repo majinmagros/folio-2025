@@ -6,4 +6,4 @@ dist
 .env*
 .autosave
 .wav
-!static/sounds/music/*.wav
+!static/sounds/musics/*.wav
