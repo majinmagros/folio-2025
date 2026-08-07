@@ -1,151 +1,133 @@
 # Folio 2025
 
-![image info](./static/social/share-image.png)
+Interactive 3D portfolio built with Three.js, Rapier physics and Vite — an explorable game-like world served as an online résumé.
+
+![Folio 2025](./static/social/share-image.png)
+
+> Remote: `https://github.com/majinmagros/folio-2025.git` (branch `main`)
+
+## Features
+
+- Fully interactive 3D world (WASD + mouse) powered by **Three.js** and **Rapier** physics.
+- Game loop organized in named phases (see "Update loop").
+- Areas (zones) with distinct content: Home, Social, Achievements, Whispers, and more.
+- Day / Year cycles and dynamic weather (wind, rain, snow, lightnings, fog, tornado).
+- Instanced foliage, terrain, trails, water, explosives crates, lanterns, fences, benches.
+- Audio layer (Howler) with contextual notifications.
+- `data/*.js` files drive: social links, areas, whispers, sites and map markers.
+- Debug UI via **Tweakpane** (+ camerakit & essentials plugins).
 
 ## Setup
 
-Create `.env` file based on `.env.example`
+Create a `.env` file based on `.env.example`:
 
-Download and install [Node.js](https://nodejs.org/en/download/) then run this followed commands:
+```
+VITE_SERVER_URL=
+VITE_ANALYTICS_TAG=
+VITE_GAME_PUBLIC=
+VITE_COMPRESSED=
+VITE_DAY_CYCLE_PROGRESS=
+VITE_YEAR_CYCLE_PROGRESS=
+VITE_WHISPERS_COUNT=30
+VITE_MUSIC=1
+VITE_LOG=1
+VITE_PLAYER_SPAWN=
+```
 
-``` bash
+Install [Node.js](https://nodejs.org/en/download/) and run:
+
+```bash
 # Install dependencies
 npm install --force
 
-# Serve at localhost:1234
+# Serve locally (vite dev server)
 npm run dev
 
-# Build for production in the dist/ directory
+# Build for production into the dist/ directory
 npm run build
+
+# Preview the production build
+npm run preview
+
+# Compress GLB / textures / UI (WebP)
+npm run compress
 ```
 
-## Game loop
+Config lives in `vite.config.js`:
+- `root: sources/` and `publicDir: ../static/`.
+- `envDir: ../` (env is loaded from the repo root via `dotenv`).
+- `build.outDir: '../dist'`, `base: './'`.
 
-#### 0
+## Project structure
 
-- Time
-- Inputs
+```
+folio-2025/
+├─ sources/          # entry (index.html) + application source
+│  ├─ data/          # content data (social, achievements, whispers, etc.)
+│  ├─ Game/          # game engine (World, Areas, physics, loop, etc.)
+│  └─ style/
+├─ static/           # public assets served as-is
+│   ├─ social/       # README/social share image
+│   ├─ ui/           # UI sprites, flags, map, previews
+│   └─ models/       # 3D assets (GLB) and textures
+├─ scripts/          # compress.js (GLB + texture optimization)
+├─ resources/        # raw/source assets (not served)
+├─ .env.example
+└─ vite.config.js
+```
 
-#### 1
+## Update loop
 
-- Player:pre-physics (Inputs)
+Phase 0 ...
 
-#### 2
-
-- PhysicalVehicle:pre-physics (Player:pre-physics)
-
-#### 3
-
-- Physics
-
-#### 4
-
-- PhysicsWireframe (Physics)
-- Objects (Physics)
-
-#### 5
-
-- PhysicalVehicle:post-physics (Player:pre-physics)
-
-#### 6
-
-- Player:post-physics (Physics, PhysicalVehicle:post-physics)
-
-#### 7
-
-- View (Inputs, Player:post-physics)
-
-#### 8
-
-- Intro
-- DayCycles
-- YearCycles
-- Weather (DayCycles, YearCycles)
-- Zones (Player:post-physics)
-- VisualVehicle (PhysicalVehicle:post-physics, Inputs, Player:post-physics, View)
-
-#### 9
-
-- Wind (Weather)
-- Lighting (DayCycles, View)
-- Tornado (DayCycles, PhysicalVehicle)
-- InteractivePoints (Player:post-physics)
-- Tracks (VisualVehicle)
-
-#### 10
-
-- Area++ (View, PhysicalVehicle:post-physics, Player:post-physics, Wind)
-- Foliage (VisualVehicle, View)
-- Fog (View)
-- Reveal (DayCycles)
-- Terrain (Tracks)
-- Trails (PhysicalVehicle)
-- Floor (View)
-- Grass (View, Wind)
-- Leaves (View, PhysicalVehicle)
-- Lightnings (View, Weather)
-- RainLines (View, Weather, Reveal)
-- Snow (View, Weather, Reveal, Tracks)
-- VisualTornado (Tornado)
-- WaterSurface (Weather, View)
-- Benches (Objects)
-- Bricks (Objects)
-- ExplosiveCrates (Objects)
-- Fences (Objects)
-- Lanterns (Objects)
-- Whispers (Player)
-
-#### 13
-
-- InstancedGroup (Objects, [SpecificObjects])
-
-#### 14
-
-- Audio (View, Objects)
-- Notifications
-- Title (PhysicalVehicle:post-physics)
-
-#### 998
-
-- Rendering
-
-#### 999
-
-- Monitoring
+```
+0   Time, Inputs
+1   Player:pre-physics (Inputs)
+2   PhysicalVehicle:pre-physics (Player:pre-physics)
+3   Physics
+4   PhysicsWireframe (Physics), Objects (Physics)
+5   PhysicalVehicle:post-physics (Player:pre-physics)
+6   Player:post-physics (Physics, PhysicalVehicle:post-physics)
+7   View (Inputs, Player:post-physics)
+8   Intro, DayCycles, YearCycles, Weather, Zones, VisualVehicle
+9   Wind, Lighting, Tornado, InteractivePoints, Tracks
+10  Area, Foliage, Fog, Reveal, Terrain, Trails, Floor, Grass,
+    Leaves, Lightnings, Rain, Snow, VisualTornado, WaterSurface,
+    Benches, Bricks, ExplosiveCrates, Fences, Lanterns, Whispers
+13  InstancedGroup (Objects)
+14  Audio, Notifications, Title
+998 Rendering
+999 Monitoring
+```
 
 ## Blender
 
 ### Export
 
-- Mute the palette texture node (loaded and set in Three.js `Material` directly)
-- Use corresponding export presets
-- Don't use compression (will be done later)
+- Mute the palette texture node (it is loaded and set in the Three.js `Material` directly).
+- Use the corresponding export presets.
+- Don't compress at export (done later by the pipeline).
 
 ### Compress
 
-Run `npm run compress`
+```bash
+npm run compress
+```
 
-Will do the following
+Runs `scripts/compress.js static/` and:
 
-#### GLB
+- **GLB** — traverses `static/` for `.glb` (skipping already-compressed), compresses embedded textures with `etc1s --quality 255` (lossy, GPU friendly), generates new files preserving originals.
+- **Texture files** — traverses `static/` for `png|jpg` (skipping non-model folders), compresses with default or per-path preset.
+- **UI files** — traverses `static/ui/` for `png|jpg`, encodes to WebP.
 
-- Traverses the `static/` folder looking for glb files (ignoring already compressed files)
-- Compresses embeded texture with `etc1s --quality 255` (lossy, GPU friendly)
-- Generates new files to preserve originals
-
-#### Texture files
-
-- Traverses the `static/` folder looking for `png|jpg` files (ignoring non-model related folders)
-- Compresses with default preset to `--encode etc1s --qlevel 255` (lossy, GPU friendly) or specific preset according to path
-- Generates new files to preserve originals
-
-#### UI files
-
-- Traverses the `static/ui.` folder looking for `png|jpg` files
-- Compresses to WebP
-
-#### Resources
-
+Resources:
 - https://gltf-transform.dev/cli
-- https://github.com/KhronosGroup/KTX-Software?tab=readme-ov-file
+- https://github.com/KhronosGroup/KTX-Software
 - https://github.khronos.org/KTX-Software/ktxtools/toktx.html
+
+## Key dependencies
+
+Three.js, @dimforge/rapier3d, gsap, howler, tweakpane, camera-controls, vite (v7), and related plugins (wasm, top-level-await, restart, basic-ssl, node-polyfills).
+
+---
+*Docs generated with verified facts from the repository (package.json, vite.config, folders).*
