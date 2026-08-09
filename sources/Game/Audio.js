@@ -153,10 +153,6 @@ export class Audio
                 name: 'Sudo.mp3'
             },
             {
-                path: 'sounds/musics/Boy.mp3',
-                name: 'Boy.mp3'
-            },
-            {
                 path: 'sounds/musics/Adrenaline Loop 2 AI Drum & Bass Thrillstep.mp3',
                 name: 'Adrenaline Loop 2'
             },
