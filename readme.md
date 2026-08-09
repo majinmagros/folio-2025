@@ -2,9 +2,16 @@
 
 Interactive 3D portfolio built with Three.js, Rapier physics and Vite — an explorable game-like world served as an online résumé.
 
-![Folio 2025](./static/social/share-image.png)
-
 > Remote: `https://github.com/majinmagros/folio-2025.git` (branch `main`)
+
+## 🔗 Acesso online
+
+| | URL |
+|---|---|
+| **Site (GitHub Pages)** | https://majinmagros.github.io/folio-2025/ |
+| **Repositório** | https://github.com/majinmagros/folio-2025 |
+
+![Folio 2025](./static/social/share-image.png)
 
 ## Features
 
@@ -128,6 +135,15 @@ Resources:
 ## Key dependencies
 
 Three.js, @dimforge/rapier3d, gsap, howler, tweakpane, camera-controls, vite (v7), and related plugins (wasm, top-level-await, restart, basic-ssl, node-polyfills).
+
+## 🚢 Implantação
+
+Publicado automaticamente via **GitHub Pages** a partir da branch `main`:
+
+- Workflow: `.github/workflows/pages.yml` (build `npm run build` → `dist/` → deploy-pages).
+- Endereço do deploy: https://majinmagros.github.io/folio-2025/
+
+Qualquer `git push` para `main` atualiza o Pages em poucos minutos.
 
 ---
 *Docs generated with verified facts from the repository (package.json, vite.config, folders).*
