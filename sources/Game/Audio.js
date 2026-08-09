@@ -157,10 +157,6 @@ export class Audio
                 name: 'Boy.mp3'
             },
             {
-                path: 'sounds/musics/Baguira.mp3',
-                name: 'Baguira.mp3'
-            },
-            {
                 path: 'sounds/musics/Adrenaline Loop 2 AI Drum & Bass Thrillstep.mp3',
                 name: 'Adrenaline Loop 2'
             },
