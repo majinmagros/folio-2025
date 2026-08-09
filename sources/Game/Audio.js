@@ -149,10 +149,6 @@ export class Audio
         this.playlist = {}
         this.playlist.songs = [
             {
-                path: 'sounds/musics/Sudo.mp3',
-                name: 'Sudo.mp3'
-            },
-            {
                 path: 'sounds/musics/Adrenaline Loop 2 AI Drum & Bass Thrillstep.mp3',
                 name: 'Adrenaline Loop 2'
             },
